@@ -1,0 +1,20 @@
+<h1>Quotes List</h1>
+{{quotes}}
+<div class="container-fluid">
+  <div class="row" style="border: 1px solid black; padding: 10px; margin: 5px;" *ngFor="let quote of quotes; let idx = index">
+    <div class="col-md-8">
+      <p>{{quote.quote}}</p>
+      <p>- {{quote.author}}</p>
+    </div>
+    <div class="col-md-2" style="text-align:center;">
+      {{quote.rating}}
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-block btn-success" (click)="up(quote)">Vote Up</button>
+        <button class="btn btn-block btn-danger" (click)="down(quote)">Vote Down</button>
+        <button class="btn btn-block" style="background: black; color: white;" (click)="delete(idx)">Delete</button>
+    </div>
+
+  </div>
+</div>
+{{data}}

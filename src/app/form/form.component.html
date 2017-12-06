@@ -1,0 +1,28 @@
+<h1>Add a Quote</h1>
+<form #form="ngForm" (submit)="onSubmit(form)">
+  <div class="row">
+    <div class="form-group col-sm-8">
+        <label for="quote">Quote: </label>
+        <textarea class="form-control" name="quote" rows="3" placeholder="Enter quote here" required minlength="4" [(ngModel)]="myQuote.quote" #quote="ngModel"></textarea>
+    </div>
+    <div class="col-sm-4" *ngIf="quote.touched && quote.invalid">
+      <br>
+      <p class="text-danger" *ngIf="quote.errors.required">*Quote is required</p>
+      <p class="text-danger" *ngIf="quote.errors.minlength">*Quote must be 4 or more characters</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-8">
+        <label for="author">Author: </label>
+        <input type="text" class="form-control" name="author" placeholder="Enter author here" required minlength="1" [(ngModel)]="myQuote.author" #author="ngModel">
+    </div>
+    <div class="col-sm-4" *ngIf="author.touched && author.invalid">
+      <br>
+      <p class="text-danger" *ngIf="author.errors.required">*Author is required</p>
+      <p class="text-danger" *ngIf="author.errors.minlength">*Author must be 1 or more characters</p>
+    </div>
+  </div>
+  <!-- <input type="hidden" name="id" value={{quoteCount}} [(ngModel)]="myQuote.id"> -->
+  <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid">Submit</button>
+</form>
+{{myQuote | json}}
